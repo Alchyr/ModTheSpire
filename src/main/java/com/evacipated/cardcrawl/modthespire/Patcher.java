@@ -517,6 +517,10 @@ public class Patcher {
                         p = new InsertPatchInfo(insertPatch, locs, ctMethodToPatch, m).setSpirePatch(patch);
                     } else if (m.getName().equals("Instrument") || m.hasAnnotation(SpireInstrumentPatch.class)) {
                         p = new InstrumentPatchInfo(ctMethodToPatch, findInstrumentMethod(loader.loadClass(cls_name), m.getName())).setSpirePatch(patch);
+                    } else if (m.hasAnnotation(SpireSimpleInstrumentPatch.class)) {
+                        SpireSimpleInstrumentPatch instrumentPatch = (SpireSimpleInstrumentPatch) m.getAnnotation(SpireSimpleInstrumentPatch.class);
+
+
                     } else if (m.getName().equals("Replace")) {
                         p = new ReplacePatchInfo(ctMethodToPatch, m).setSpirePatch(patch);
                     } else if (m.getName().equals("Raw") || m.hasAnnotation(SpireRawPatch.class)) {

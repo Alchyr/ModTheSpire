@@ -20,7 +20,7 @@ public class ReplacePatchInfo extends PatchInfo
     @Override
     public int patchOrdering()
     {
-        return 0;
+        return 1;
     }
 
     @Override
